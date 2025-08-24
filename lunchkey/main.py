@@ -60,7 +60,7 @@ class Launchkey:
         # Try to find a matching port by name
         print(f"Trying to find matching MIDI port containing '{port_name}'...")
         try:
-            ports = self.backend.get_output_names()
+            ports: list[str] = self.backend.get_output_names()
             for port in ports:
                 if port_name.lower() in port.lower():
                     print(f"Found matching MIDI port: {port}")
