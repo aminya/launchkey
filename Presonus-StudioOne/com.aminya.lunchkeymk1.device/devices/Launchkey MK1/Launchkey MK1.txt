@@ -1,0 +1,1 @@
+Studio One extension for Novation Launchkey MK1 controller with full pad, encoder, and transport control support.

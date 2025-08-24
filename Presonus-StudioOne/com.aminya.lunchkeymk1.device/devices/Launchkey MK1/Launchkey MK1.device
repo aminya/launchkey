@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<DeviceDefinition
+	vendor="Novation"
+	name="Launchkey MK1"
+
+	classID="{DD31ACD5-36E4-4E33-BA01-7761F8CA4F76}"
+	category="Keyboard"
+	nativeCode="KeyboardDevice"
+
+	surfaceFile="Launchkey MK1 DAW.surface.xml"
+
+	imageFile="Launchkey MK1.png"
+	textFile="Launchkey MK1.txt"
+
+	detectorReceivePortName="Launchkey 61, Launchkey 49, Launchkey 25"
+	detectorSendPortName="Launchkey 61, Launchkey 49, Launchkey 25"
+/>
