@@ -31,9 +31,30 @@ Control Novation Launchkey MIDI keyboard with LED animations and MIDI functional
 
 ## Installation
 
-### Using uv (Recommended)
+### Using pip (Recommended)
 
-[uv](https://github.com/astral-sh/uv) is a fast Python package installer and resolver.
+Install directly from PyPI:
+
+```bash
+pip install lunchkey
+```
+
+After installation, you can use the command-line tool:
+
+```bash
+# List available MIDI ports
+lunchkey --list-ports
+
+# Connect to a specific MIDI port
+lunchkey --port "MIDIOUT2"
+
+# Connect without running animation
+lunchkey --port "MIDIOUT2" --no-animation
+```
+
+### Using uv (Development)
+
+[uv](https://github.com/astral-sh/uv) is a fast Python package installer and resolver, useful for development.
 
 1. **Install uv** (if not already installed):
    ```bash
@@ -63,7 +84,23 @@ Control Novation Launchkey MIDI keyboard with LED animations and MIDI functional
 
 ### Command Line Interface
 
-The main script provides several command-line options:
+#### With pip installation:
+
+```bash
+# List available MIDI ports
+lunchkey --list-ports
+
+# Connect to a specific MIDI port
+lunchkey --port "MIDIOUT2"
+
+# Connect without running animation (useful for testing)
+lunchkey --port "MIDIOUT2" --no-animation
+
+# Use default port (MIDIOUT2)
+lunchkey
+```
+
+#### With uv development setup:
 
 ```bash
 # List available MIDI ports
@@ -83,7 +120,7 @@ uv run python -m lunchkey.main
 
 ```python
 from mido.backends.backend import Backend
-from lunchkey.main import Launchkey
+from lunchkey import Launchkey
 
 # Initialize and connect
 backend = Backend(name="mido.backends.rtmidi", load=True)

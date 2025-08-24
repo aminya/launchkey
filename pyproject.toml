@@ -1,10 +1,38 @@
 [project]
 name = "lunchkey"
 version = "0.1.0"
-description = "Control Novation lunchkey MIDI keyboard"
+description = "Control Novation Launchkey MIDI keyboard with LED animations and MIDI functionality"
 readme = "README.md"
 requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Amin Ya", email = "aminyahyaabadi74@gmail.com"}
+]
+keywords = ["midi", "novation", "launchkey", "music", "led", "controller"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: MIDI",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 dependencies = [
     "mido>=1.3.3",
     "python-rtmidi>=1.5.8",
 ]
+
+[project.urls]
+Homepage = "https://github.com/aminya/lunchkey"
+Repository = "https://github.com/aminya/lunchkey"
+Bug_Reports = "https://github.com/aminya/lunchkey/issues"
+
+[project.scripts]
+lunchkey = "lunchkey.main:main"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
