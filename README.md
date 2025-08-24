@@ -2,6 +2,8 @@
 
 Control Novation Launchkey MIDI keyboard with LED animations and MIDI functionality.
 
+![Animation](https://github.com/user-attachments/assets/7bc74796-42e6-432a-b0c4-b2bb83b66e5e)
+
 ## Description
 
 `lunchkey` is a Python library and command-line tool for controlling Novation Launchkey MIDI keyboards. It provides functionality to:
@@ -44,22 +46,19 @@ Control Novation Launchkey MIDI keyboard with LED animations and MIDI functional
 
 2. **Clone and install the project**:
    ```bash
-   git clone https://github.com/yourusername/lunchkey.git
+   git clone https://github.com/aminya/lunchkey.git
    cd lunchkey
    uv sync
    ```
 
-3. **Activate the virtual environment**:
+3. **Run Python scripts directly with uv**:
    ```bash
+   # Run the main script
+   uv run python -m lunchkey.main
+
+   # Or activate the virtual environment for interactive use
    uv shell
    ```
-
-### Alternative: Using pip
-
-```bash
-pip install -e .
-```
-
 ## Usage
 
 ### Command Line Interface
@@ -68,16 +67,16 @@ The main script provides several command-line options:
 
 ```bash
 # List available MIDI ports
-python -m lunchkey.main --list-ports
+uv run python -m lunchkey.main --list-ports
 
 # Connect to a specific MIDI port
-python -m lunchkey.main --port "MIDIOUT2"
+uv run python -m lunchkey.main --port "MIDIOUT2"
 
 # Connect without running animation (useful for testing)
-python -m lunchkey.main --port "MIDIOUT2" --no-animation
+uv run python -m lunchkey.main --port "MIDIOUT2" --no-animation
 
 # Use default port (MIDIOUT2)
-python -m lunchkey.main
+uv run python -m lunchkey.main
 ```
 
 ### Python API
@@ -157,10 +156,11 @@ lunchkey/
 ### Running Tests
 
 ```bash
-# Activate virtual environment
-uv shell
+# Run tests directly with uv (recommended)
+uv run pytest
 
-# Run tests (if available)
+# Or activate virtual environment first
+uv shell
 pytest
 ```
 
