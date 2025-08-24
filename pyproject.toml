@@ -1,0 +1,10 @@
+[project]
+name = "lunchkey"
+version = "0.1.0"
+description = "Control Novation lunchkey MIDI keyboard"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mido>=1.3.3",
+    "python-rtmidi>=1.5.8",
+]
