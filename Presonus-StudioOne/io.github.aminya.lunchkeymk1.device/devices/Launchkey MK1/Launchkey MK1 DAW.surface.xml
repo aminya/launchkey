@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ControlSurface>
+    <Controls>
+
+        <!-- ******************************************************************************************** -->
+        <!-- Track Selector -->
+        <!-- ******************************************************************************************** -->
+
+        <!-- Start from CC 102 -->
+        <Control name="prevTrack" title="Prev Track" type="trigger" options="receive public">
+            <MidiMessage status="Controller" address="102"/>
+        </Control>
+        <Control name="nextTrack" title="Next Track" type="trigger" options="receive public">
+            <MidiMessage status="Controller" address="103"/>
+        </Control>
+
+        <!-- ******************************************************************************************** -->
+        <!-- FADER CONTROLS  -->
+        <!-- ******************************************************************************************** -->
+
+        <!-- Start from CC 41 -->
+        <Control name="fader[0]" title="Fader 1" type="fader" options="transmit receive public">
+            <MidiMessage status="Controller" address="41"/>
+        </Control>
+        <Control name="fader[1]" title="Fader 2" type="fader" options="transmit receive public">
+            <MidiMessage status="Controller" address="42"/>
+        </Control>
+        <Control name="fader[2]" title="Fader 3" type="fader" options="transmit receive public">
+            <MidiMessage status="Controller" address="43"/>
+        </Control>
+        <Control name="fader[3]" title="Fader 4" type="fader" options="transmit receive public">
+            <MidiMessage status="Controller" address="44"/>
+        </Control>
+        <Control name="fader[4]" title="Fader 5" type="fader" options="transmit receive public">
+            <MidiMessage status="Controller" address="45"/>
+        </Control>
+        <Control name="fader[5]" title="Fader 6" type="fader" options="transmit receive public">
+            <MidiMessage status="Controller" address="46"/>
+        </Control>
+        <Control name="fader[6]" title="Fader 7" type="fader" options="transmit receive public">
+            <MidiMessage status="Controller" address="47"/>
+        </Control>
+        <Control name="fader[7]" title="Fader 8" type="fader" options="transmit receive public">
+            <MidiMessage status="Controller" address="48"/>
+        </Control>
+
+        <!-- Master Fader (Controller volume) -->
+        <Control name="masterFader" title="Master" type="fader" options="transmit receive public">
+            <MidiMessage status="Controller" address="7"/>
+        </Control>
+
+        <!-- ******************************************************************************************** -->
+        <!-- SOLO CONTROLS -->
+        <!-- ******************************************************************************************** -->
+
+        <!-- Start from CC 51 -->
+        <Control name="solo[0]" title="Solo 1" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="51"/>
+        </Control>
+        <Control name="solo[1]" title="Solo 2" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="52"/>
+        </Control>
+        <Control name="solo[2]" title="Solo 3" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="53"/>
+        </Control>
+        <Control name="solo[3]" title="Solo 4" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="54"/>
+        </Control>
+        <Control name="solo[4]" title="Solo 5" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="55"/>
+        </Control>
+        <Control name="solo[5]" title="Solo 6" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="56"/>
+        </Control>
+        <Control name="solo[6]" title="Solo 7" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="57"/>
+        </Control>
+        <Control name="solo[7]" title="Solo 8" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="58"/>
+        </Control>
+
+        <!-- Master Muteswitch -->
+        <Control name="soloButton" type="button" options="receive public">
+            <MidiMessage status="Controller" address="59"/>
+        </Control>
+        <Control name="soloLED" options="transmit public">
+            <MidiMessage status="Controller" address="59"/>
+        </Control>
+
+        <!-- ******************************************************************************************** -->
+        <!-- ROTARY ENCODERS (8) -->
+        <!-- ******************************************************************************************** -->
+
+        <!-- start from CC 21 -->
+        <Control name="encoder[0]" title="Encoder 1" options="receive public">
+            <MidiMessage status="Controller" address="21"/>
+        </Control>
+        <Control name="encoder[1]" title="Encoder 2" options="receive public">
+            <MidiMessage status="Controller" address="22"/>
+        </Control>
+        <Control name="encoder[2]" title="Encoder 3" options="receive public">
+            <MidiMessage status="Controller" address="23"/>
+        </Control>
+        <Control name="encoder[3]" title="Encoder 4" options="receive public">
+            <MidiMessage status="Controller" address="24"/>
+        </Control>
+        <Control name="encoder[4]" title="Encoder 5" options="receive public">
+            <MidiMessage status="Controller" address="25"/>
+        </Control>
+        <Control name="encoder[5]" title="Encoder 6" options="receive public">
+            <MidiMessage status="Controller" address="26"/>
+        </Control>
+        <Control name="encoder[6]" title="Encoder 7" options="receive public">
+            <MidiMessage status="Controller" address="27"/>
+        </Control>
+        <Control name="encoder[7]" title="Encoder 8" options="receive public">
+            <MidiMessage status="Controller" address="28"/>
+        </Control>
+
+        <!-- ******************************************************************************************** -->
+        <!-- PADS (8x2 Grid) -->
+        <!-- ******************************************************************************************** -->
+
+        <!-- Top Row Pads -->
+        <!-- Start from Note on-off C 6 -->
+        <Control name="pad[0]" title="Pad 1" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="96"/>
+        </Control>
+        <Control name="pad[1]" title="Pad 2" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="97"/>
+        </Control>
+        <Control name="pad[2]" title="Pad 3" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="98"/>
+        </Control>
+        <Control name="pad[3]" title="Pad 4" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="99"/>
+        </Control>
+        <Control name="pad[4]" title="Pad 5" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="100"/>
+        </Control>
+        <Control name="pad[5]" title="Pad 6" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="101"/>
+        </Control>
+        <Control name="pad[6]" title="Pad 7" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="102"/>
+        </Control>
+        <Control name="pad[7]" title="Pad 8" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="103"/>
+        </Control>
+
+        <Control name="bankLeft" type="trigger" options="receive public">
+            <MidiMessage status="NoteTrigger" address="104"/>
+        </Control>
+
+        <!-- Bottom Row Pads starting from E7 -->
+        <Control name="pad[8]" title="Pad 9" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="112"/>
+        </Control>
+        <Control name="pad[9]" title="Pad 10" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="113"/>
+        </Control>
+        <Control name="pad[10]" title="Pad 11" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="114"/>
+        </Control>
+        <Control name="pad[11]" title="Pad 12" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="115"/>
+        </Control>
+        <Control name="pad[12]" title="Pad 13" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="116"/>
+        </Control>
+        <Control name="pad[13]" title="Pad 14" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="117"/>
+        </Control>
+        <Control name="pad[14]" title="Pad 15" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="118"/>
+        </Control>
+        <Control name="pad[15]" title="Pad 16" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="119"/>
+        </Control>
+
+        <Control name="bankRight" type="trigger" options="receive public">
+            <MidiMessage status="NoteTrigger" address="120"/>
+        </Control>
+
+        <!-- Transmitter controls, handlers setup in script. -->
+
+        <!-- Pad on/off state -->
+
+        <Control name="padLEDState[0]" options="transmit fastupdate"/>
+        <Control name="padLEDState[1]" options="transmit fastupdate"/>
+        <Control name="padLEDState[2]" options="transmit fastupdate"/>
+        <Control name="padLEDState[3]" options="transmit fastupdate"/>
+        <Control name="padLEDState[4]" options="transmit fastupdate"/>
+        <Control name="padLEDState[5]" options="transmit fastupdate"/>
+        <Control name="padLEDState[6]" options="transmit fastupdate"/>
+        <Control name="padLEDState[7]" options="transmit fastupdate"/>
+        <Control name="padLEDState[8]" options="transmit fastupdate"/>
+        <Control name="padLEDState[9]" options="transmit fastupdate"/>
+        <Control name="padLEDState[10]" options="transmit fastupdate"/>
+        <Control name="padLEDState[11]" options="transmit fastupdate"/>
+        <Control name="padLEDState[12]" options="transmit fastupdate"/>
+        <Control name="padLEDState[13]" options="transmit fastupdate"/>
+        <Control name="padLEDState[14]" options="transmit fastupdate"/>
+        <Control name="padLEDState[15]" options="transmit fastupdate"/>
+        <Control name="padLEDState[16]" options="transmit fastupdate"/>
+
+        <!-- Bank left and right -->
+        <Control name="padLEDState[17]" options="transmit fastupdate"/>
+        <Control name="padLEDState[18]" options="transmit fastupdate"/>
+
+        <!-- Pad color -->
+        <!-- TODO: type="rgb" may not be required, check. -->
+
+        <Control name="padLEDColor[0]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[1]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[2]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[3]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[4]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[5]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[6]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[7]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[8]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[9]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[10]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[11]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[12]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[13]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[14]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[15]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[16]" type="rgb" options="transmit fastupdate"/>
+
+        <!-- Bank left and right -->
+        <Control name="padLEDColor[17]" type="rgb" options="transmit fastupdate"/>
+        <Control name="padLEDColor[18]" type="rgb" options="transmit fastupdate"/>
+
+        <!-- ******************************************************************************************** -->
+        <!-- TRANSPORT BUTTONS -->
+        <!-- ******************************************************************************************** -->
+
+        <!-- Start from CC 112 -->
+        <Control name="rewindButton" title="Rewind" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="112"/>
+        </Control>
+        <Control name="ffButton" title="FastForward" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="113"/>
+        </Control>
+        <Control name="stopButton" title="Stop" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="114"/>
+        </Control>
+        <Control name="playButton" title="Play" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="115"/>
+        </Control>
+        <Control name="loopButton" title="Loop" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="116"/>
+        </Control>
+        <Control name="recordButton" title="Record" type="button" options="transmit receive public">
+            <MidiMessage status="Controller" address="117"/>
+        </Control>
+
+        <!-- ******************************************************************************************** -->
+        <!-- Mode buttons -->
+        <!-- ******************************************************************************************** -->
+        <!-- C# -1 (0 for active, 127 for inactive) -->
+        <Control name="encoderActive" title="Encoder Active" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="13"/>
+        </Control>
+
+        <!-- C# -1 (0 for active, 127 for inactive) -->
+        <Control name="faderActive" title="Fader Active" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="14"/>
+        </Control>
+
+        <!-- D# -1 (0 for active, 127 for inactive) -->
+        <Control name="padActive" title="Pad Active" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="15"/>
+        </Control>
+
+        <!-- Virtual Studio-One specific sub-modes buttons -->
+        <Control name="padLauncher" type="button" options="receive transmit public"/>
+        <Control name="padUser" type="button" options="receive transmit public"/>
+    </Controls>
+
+    <!-- ******************************************************************************************** -->
+    <!-- COLOR TABLES -->
+    <!-- ******************************************************************************************** -->
+
+    <ColorTables>
+        <!-- Colors assigned from script due to number. -->
+        <ColorTable name="DAWModeColors" cachesize="8" compare="equal"/>
+    </ColorTables>
+
+    <!-- ******************************************************************************************** -->
+    <!-- SURFACE MAPPINGS -->
+    <!-- ******************************************************************************************** -->
+
+    <Mappings>
+
+        <Global>
+
+            <!-- ******************************************************************************************** -->
+            <!--  Navigation buttons -->
+            <!-- ******************************************************************************************** -->
+            <Command control="prevTrack" command.category="Navigation" command.name="Previous Track"/>
+            <Command control="nextTrack" command.category="Navigation" command.name="Next Track"/>
+
+            <!-- ******************************************************************************************** -->
+            <!--  Pad section mode -->
+            <!-- ******************************************************************************************** -->
+            <Toggle control="encoderActive" param="encoderActive" />
+            <Toggle control="faderActive" param="faderActive" />
+            <Toggle control="padActive" param="padActive" />
+
+            <!-- Allow changing the pad mode from the Presonus instrument GUI. -->
+            <define name="$PADSECTION_MODE_NONE" value ="0"/>
+            <define name="$PADSECTION_MODE_LAUNCHER" value ="1"/>
+
+            <!-- Virtual Studio-One specific sub-modes for the pad section -->
+            <Radio control="padLauncher" param="padSectionMode" value="$PADSECTION_MODE_LAUNCHER"/>
+            <Radio control="padUser" param="padSectionMode" value="$PADSECTION_MODE_NONE"/>
+        </Global>
+
+        <!-- ******************************************************************************************** -->
+        <!-- MIXER MAPPING -->
+        <!-- ******************************************************************************************** -->
+
+        <DeviceMapping device="MixerConsole">
+            <!-- 8 Channel Strips -->
+            <PlacementBank target="RemoteBank" pagesize="8" name="ChannelBankElement">
+                <foreach variable="$ch" count="8">
+                    <Strip onConnect="onConnectChannel($ch)">
+                        <Value control="fader[$ch]" param="volume"/>
+                        <Toggle control="solo[$ch]" param="solo" options="momentary"/>
+                        <Value control="encoder[$ch]" param="pan"/>
+                    </Strip>
+                </foreach>
+
+                <!-- Bank Scroll Buttons -->
+                <ScrollButton control="bankLeft" direction="pageleft"/>
+                <ScrollButton control="bankRight" direction="pageright"/>
+                <Pad control="bankLeft">
+                    <Value control="padLEDState[17]" param="state"/>
+                    <ColorIndex table="DAWModeColors" control="padLEDColor[17]" param="color"/>
+                </Pad>
+                <Pad control="bankRight">
+                    <Value control="padLEDState[18]" param="state"/>
+                    <ColorIndex table="DAWModeColors" control="padLEDColor[18]" param="color"/>
+                </Pad>
+            </PlacementBank>
+
+            <Bank target="MasterBank">
+                <Strip>
+                    <Value control="masterFader" param="volume"/>
+                </Strip>
+            </Bank>
+
+            <Toggle control="soloButton" param="anySolo"/>
+            <Value control="soloLED" param="anySolo"/>
+        </DeviceMapping>
+
+        <!-- ******************************************************************************************** -->
+        <!-- TRANSPORT MAPPING -->
+        <!-- ******************************************************************************************** -->
+
+        <DeviceMapping device="TransportPanel">
+            <Touch control="rewindButton" param="rewind"/>
+            <Touch control="ffButton" param="fastForward"/>
+            <Command control="stopButton" command.category="Transport" command.name="Stop"/>
+            <Command control="playButton" command.category="Transport" command.name="Start"/>
+            <Toggle control="loopButton" param="loop"/>
+            <Toggle control="recordButton" param="record"/>
+        </DeviceMapping>
+
+        <!-- ******************************************************************************************** -->
+        <!-- PAD MAPPING FOR DRUM MACHINE -->
+        <!-- ******************************************************************************************** -->
+
+        <DeviceMapping device="DrumMachine">
+            <foreach variable="$pad" count="16">
+                <Pad>
+                    <Trigger control="pad[$pad]" param="trigger"/>
+                </Pad>
+            </foreach>
+        </DeviceMapping>
+
+        <!-- PAD SECTION  -->
+        <!-- ******************************************************************************************** -->
+
+        <PadSection name="PadSectionElement" rows="2" roles="launcherinput">
+            <foreach variable="$i" count="16">
+                <Pad control="pad[$i]">
+                    <Value control="padLEDState[$i]" param="state"/>
+                    <ColorIndex table="DAWModeColors" control="padLEDColor[$i]" param="color"/>
+                </Pad>
+            </foreach>
+        </PadSection>
+    </Mappings>
+</ControlSurface>

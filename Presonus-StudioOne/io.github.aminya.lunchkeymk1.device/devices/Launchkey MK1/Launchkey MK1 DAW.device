@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DeviceDefinition
+	vendor="Novation"
+	name="Launchkey MK1 DAW"
+
+	classID="{4BB3D92D-10FD-490e-82CE-79A86F79A713}"
+	category="Surface"
+
+	nativeCode="JSControlSurfaceDevice"
+	classFile="LaunchkeyMidiDevice.js"
+	classFile.functionName="createLaunchkeyMK1DeviceInstance"
+	surfaceFile="Launchkey MK1 DAW.surface.xml"
+	surfacePlacementSize="8"
+
+	scriptFile="LaunchkeyComponent.js"
+	scriptFile.functionName="createLaunchkeyMK1ComponentInstance"
+
+	imageFile="Launchkey MK1.png"
+	textFile="Launchkey MK1.txt"
+
+	detectorReceivePortName="MIDIIN2 (Launchkey 61), MIDIIN2 (Launchkey 49), MIDIIN2 (Launchkey 25)"
+	detectorSendPortName="MIDIOUT2 (Launchkey 61), MIDIOUT2 (Launchkey 49), MIDIOUT2 (Launchkey 25)"
+/>
