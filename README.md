@@ -29,8 +29,8 @@ It provides two devices that will be added automatically once the extension is i
 
 ### Installing the StudioOne Extension
 
-1. Download the extension from the `Presonus-StudioOne/` directory
-2. Copy the extension folder to your Studio One under `C:\Users\<username>\AppData\Roaming\PreSonus\Studio One 7\Extensions`
+1. Download the extension from [this link](https://github.com/aminya/lunchkey/releases/download/v0.1.0/io.github.aminya.lunchkeymk1.device.zip)
+2. Extract it and copy the extension folder to your Studio One under `C:\Users\<username>\AppData\Roaming\PreSonus\Studio One 7\Extensions`
 3. Restart Studio One
 4. The Launchkey MK1 will appear in your MIDI device list
 
