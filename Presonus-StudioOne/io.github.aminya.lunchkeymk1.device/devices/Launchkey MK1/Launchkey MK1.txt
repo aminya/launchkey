@@ -1,0 +1,20 @@
+Studio One extension for Novation Launchkey MK1 controller with full pad, encoder, and transport control support.
+
+It provides two devices that will be added automatically once the extension is installed. InControl buttons allow to switch between the two modes for the shared controls.
+
+- DAW Device:
+  - Transport controls
+  - Previous/Next track
+  - 9 Faders: volume of the tracks and master
+  - 8 Encoders: pan
+  - 9 Buttons: solo tracks and master
+  - 2 circular buttons: move the mixer's page 8 tracks left/right
+  - 16 pads: user asssignable in User mode, and works with launcher in Launcher mode (selectable from Studio One GUI)
+
+- Instrument Device: allows to use the keyboard as an instrument and use the faders and encoders for controlling any parameter.
+  - Keys of the keyboard
+  - 16 pads: note on/off
+  - 9 Faders: user assignable
+  - 9 Solo Buttons: user assignable
+  - 8 Encoders: user assignable
+  - 2 Circular Buttons: user assignable
