@@ -4,7 +4,7 @@
 	<Attribute id="Package:Name" value="Novation Launchkey MK1"/>
 	<Attribute id="Package:Description" value="Novation Launchkey MK1 Support for Studio One"/>
 	<Attribute id="Package:Version" value="1.0.0.0"/>
-	<Attribute id="Package:Vendor" value="Aminya"/>
+	<Attribute id="Package:Vendor" value="AminYa"/>
 	<Attribute id="Package:Website" value="https://aminya.github.io/"/>
 	<Attribute id="Package:Copyright" value="MIT"/>
 </MetaInformation>
