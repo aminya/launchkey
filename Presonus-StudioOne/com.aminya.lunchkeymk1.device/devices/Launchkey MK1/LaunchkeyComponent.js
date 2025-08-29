@@ -2,21 +2,13 @@ include_file("resource://com.presonus.musicdevices/sdk/controlsurfacecomponent.j
 include_file("resource://com.presonus.musicdevices/sdk/musicprotocol.js");
 include_file("LaunchkeyProtocol.js");
 
-var LaunchkeyPadSectionMode;
-(function (LaunchkeyPadSectionMode) {
-    LaunchkeyPadSectionMode[LaunchkeyPadSectionMode["kNone"] = 0] = "kNone";
-    LaunchkeyPadSectionMode[LaunchkeyPadSectionMode["kLauncher"] = 1] = "kLauncher";
-    LaunchkeyPadSectionMode[LaunchkeyPadSectionMode["kModeMin"] = 0] = "kModeMin";
-    LaunchkeyPadSectionMode[LaunchkeyPadSectionMode["kModeMax"] = 1] = "kModeMax";
-})(LaunchkeyPadSectionMode || (LaunchkeyPadSectionMode = {}));
-
-var LaunchkeyNavButtonIndex;
-(function (LaunchkeyNavButtonIndex) {
-    LaunchkeyNavButtonIndex[LaunchkeyNavButtonIndex["kUp"] = 0] = "kUp";
-    LaunchkeyNavButtonIndex[LaunchkeyNavButtonIndex["kDown"] = 1] = "kDown";
-    LaunchkeyNavButtonIndex[LaunchkeyNavButtonIndex["kLeft"] = 2] = "kLeft";
-    LaunchkeyNavButtonIndex[LaunchkeyNavButtonIndex["kRight"] = 3] = "kRight";
-})(LaunchkeyNavButtonIndex || (LaunchkeyNavButtonIndex = {}));
+var PadSectionMode;
+(function (PadSectionMode) {
+    PadSectionMode[PadSectionMode["kNone"] = 0] = "kNone";
+    PadSectionMode[PadSectionMode["kLauncher"] = 1] = "kLauncher";
+    PadSectionMode[PadSectionMode["kModeMin"] = 0] = "kModeMin";
+    PadSectionMode[PadSectionMode["kModeMax"] = 1] = "kModeMax";
+})(PadSectionMode || (PadSectionMode = {}));
 
 class LaunchkeyComponent extends PreSonus.ControlSurfaceComponent {
     onInit(hostComponent) {
@@ -33,9 +25,7 @@ class LaunchkeyComponent extends PreSonus.ControlSurfaceComponent {
         }
 
         let paramList = hostComponent.paramList;
-        this.padSectionMode = paramList.addInteger(LaunchkeyPadSectionMode.kModeMin, LaunchkeyPadSectionMode.kModeMax, "padSectionMode");
-        this.stopModifier = paramList.addParam("stopModifier");
-        this.laneOverlay = paramList.addParam("laneOverlay");
+        this.padSectionMode = paramList.addInteger(PadSectionMode.kModeMin, PadSectionMode.kModeMax, "padSectionMode");
 
         // Launchkey-specific color parameters
         this.whiteColorParam = paramList.addColor("whiteColor");
@@ -58,21 +48,15 @@ class LaunchkeyComponent extends PreSonus.ControlSurfaceComponent {
         c.addNullHandler();
         c.addHandlerForRole(PreSonus.PadSectionRole.kLauncherInput);
 
-        let launcherInputHandler = this.padSection.component.getHandler(LaunchkeyPadSectionMode.kLauncher);
+        let launcherInputHandler = this.padSection.component.getHandler(PadSectionMode.kLauncher);
         launcherInputHandler.setMappingMode(PreSonus.PadSectionLauncherMode.kCombined);
         this.launcherHandler = launcherInputHandler;
 
-        this.updatePadSectionMode(LaunchkeyPadSectionMode.kNone);
+        this.updatePadSectionMode(PadSectionMode.kNone);
     }
 
     paramChanged(param) {
-        if (param == this.stopModifier) {
-            this.padSection.component.setModifierActive(param.value, PreSonus.PadModifier.kLauncherStop);
-        }
-        else if (param == this.laneOverlay) {
-            this.enableLaneMappingMode(param.value);
-        }
-        else if (param == this.padSectionMode) {
+        if (param == this.padSectionMode) {
             this.updatePadSectionMode(param.value);
         }
         else {
@@ -85,71 +69,16 @@ class LaunchkeyComponent extends PreSonus.ControlSurfaceComponent {
     }
 
     onSuspend(state) {
-        if (state && this.padSectionMode.value == LaunchkeyPadSectionMode.kLauncher)
-            this.padSectionMode.setValue(LaunchkeyPadSectionMode.kNone, true);
+        if (state && this.padSectionMode.value == PadSectionMode.kLauncher)
+            this.padSectionMode.setValue(PadSectionMode.kNone, true);
     }
-
-    onLauncherNavigateHome(state) {
-        if (!state)
-            return;
-        if (!this.launcherHandler)
-            return;
-        this.launcherHandler.setRowOffset(0);
-        this.launcherHandler.setColumnOffset(0);
-    }
-
-    onLauncherNavigateUp(state) {
-        if (!state)
-            return;
-        if (!this.launcherHandler)
-            return;
-        let offset = this.launcherHandler.getRowOffset();
-        this.launcherHandler.setRowOffset(offset - 1);
-    }
-
-    onLauncherNavigateDown(state) {
-        if (!state)
-            return;
-        if (!this.launcherHandler)
-            return;
-        let offset = this.launcherHandler.getRowOffset();
-        this.launcherHandler.setRowOffset(offset + 1);
-    }
-
-    onLauncherNavigateLeft(state) {
-        if (!state)
-            return;
-        if (!this.launcherHandler)
-            return;
-        let offset = this.launcherHandler.getColumnOffset();
-        this.launcherHandler.setColumnOffset(offset - 1);
-    }
-
-    onLauncherNavigateRight(state) {
-        if (!state)
-            return;
-        if (!this.launcherHandler)
-            return;
-        let offset = this.launcherHandler.getColumnOffset();
-        this.launcherHandler.setColumnOffset(offset + 1);
-    }
-
-    enableLaneMappingMode(state) {
-        if (!this.launcherHandler)
-            return;
-        let mode = state ? PreSonus.PadSectionLauncherMode.kLanes : PreSonus.PadSectionLauncherMode.kCombined;
-        let rowOffset = this.launcherHandler.getRowOffset();
-        this.launcherHandler.setMappingMode(mode);
-        this.launcherHandler.setRowOffset(rowOffset);
-    }
-
     updatePadSectionMode(mode) {
         this.padSection.component.setActiveHandler(mode);
     }
 }
 
 LaunchkeyComponent.kSceneButtonCount = 8;
-LaunchkeyComponent.kNavButtonCount = 4;
+LaunchkeyComponent.kNavButtonCount = 0;
 LaunchkeyComponent.kMuteSoloButtonIndex = 0;
 
 class LaunchkeyMK1Component extends LaunchkeyComponent {

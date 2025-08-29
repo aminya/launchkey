@@ -7,11 +7,11 @@
         <!-- ******************************************************************************************** -->
 
         <!-- Start from CC 102 -->
-        <Control name="prevTrack" title="Prev Track" type="trigger" options="transmit receive public">
-            <MidiMessage status="#B0" address="#102"/>
+        <Control name="prevTrack" title="Prev Track" type="trigger" options="receive public">
+            <MidiMessage status="Controller" address="102"/>
         </Control>
-        <Control name="nextTrack" title="Next Track" type="trigger" options="transmit receive public">
-            <MidiMessage status="#B0" address="#103"/>
+        <Control name="nextTrack" title="Next Track" type="trigger" options="receive public">
+            <MidiMessage status="Controller" address="103"/>
         </Control>
 
         <!-- ******************************************************************************************** -->
@@ -238,10 +238,10 @@
         <!-- ******************************************************************************************** -->
 
         <!-- Start from CC 112 -->
-        <Control name="rewindButton" title="RW" type="button" options="transmit receive public">
+        <Control name="rewindButton" title="Rewind" type="button" options="transmit receive public">
             <MidiMessage status="Controller" address="112"/>
         </Control>
-        <Control name="ffButton" title="FF" type="button" options="transmit receive public">
+        <Control name="ffButton" title="FastForward" type="button" options="transmit receive public">
             <MidiMessage status="Controller" address="113"/>
         </Control>
         <Control name="stopButton" title="Stop" type="button" options="transmit receive public">
@@ -256,6 +256,28 @@
         <Control name="recordButton" title="Record" type="button" options="transmit receive public">
             <MidiMessage status="Controller" address="117"/>
         </Control>
+
+        <!-- ******************************************************************************************** -->
+        <!-- Mode buttons -->
+        <!-- ******************************************************************************************** -->
+        <!-- C# -1 (0 for active, 127 for inactive) -->
+        <Control name="encoderActive" title="Encoder Active" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="13"/>
+        </Control>
+
+        <!-- C# -1 (0 for active, 127 for inactive) -->
+        <Control name="faderActive" title="Fader Active" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="14"/>
+        </Control>
+
+        <!-- D# -1 (0 for active, 127 for inactive) -->
+        <Control name="padActive" title="Pad Active" type="button" options="receive public">
+            <MidiMessage status="NoteTrigger" address="15"/>
+        </Control>
+
+        <!-- Virtual Studio-One specific sub-modes buttons -->
+        <Control name="padLauncher" type="button" options="receive transmit public"/>
+        <Control name="padUser" type="button" options="receive transmit public"/>
     </Controls>
 
     <!-- ******************************************************************************************** -->
@@ -264,9 +286,8 @@
 
     <ColorTables>
         <!-- Colors assigned from script due to number. -->
-        <ColorTable name="DAWModeColors" cachesize="128" compare="equal"/>
+        <ColorTable name="DAWModeColors" cachesize="8" compare="equal"/>
     </ColorTables>
-
 
     <!-- ******************************************************************************************** -->
     <!-- SURFACE MAPPINGS -->
@@ -275,14 +296,27 @@
     <Mappings>
 
         <Global>
+
             <!-- ******************************************************************************************** -->
             <!--  Navigation buttons -->
             <!-- ******************************************************************************************** -->
             <Command control="prevTrack" command.category="Navigation" command.name="Previous Track"/>
-            <Invoke control="prevTrack" onReceive="onLauncherNavigateLeft"/>
-
             <Command control="nextTrack" command.category="Navigation" command.name="Next Track"/>
-            <Invoke control="nextTrack" onReceive="onLauncherNavigateRight"/>
+
+            <!-- ******************************************************************************************** -->
+            <!--  Pad section mode -->
+            <!-- ******************************************************************************************** -->
+            <Toggle control="encoderActive" param="encoderActive" />
+            <Toggle control="faderActive" param="faderActive" />
+            <Toggle control="padActive" param="padActive" />
+
+            <!-- Allow changing the pad mode from the Presonus instrument GUI. -->
+            <define name="$PADSECTION_MODE_NONE" value ="0"/>
+            <define name="$PADSECTION_MODE_LAUNCHER" value ="1"/>
+
+            <!-- Virtual Studio-One specific sub-modes for the pad section -->
+            <Radio control="padLauncher" param="padSectionMode" value="$PADSECTION_MODE_LAUNCHER"/>
+            <Radio control="padUser" param="padSectionMode" value="$PADSECTION_MODE_NONE"/>
         </Global>
 
         <!-- ******************************************************************************************** -->
@@ -303,6 +337,14 @@
                 <!-- Bank Scroll Buttons -->
                 <ScrollButton control="bankLeft" direction="pageleft"/>
                 <ScrollButton control="bankRight" direction="pageright"/>
+                <Pad control="bankLeft">
+                    <Value control="padLEDState[17]" param="state"/>
+                    <ColorIndex table="DAWModeColors" control="padLEDColor[17]" param="color"/>
+                </Pad>
+                <Pad control="bankRight">
+                    <Value control="padLEDState[18]" param="state"/>
+                    <ColorIndex table="DAWModeColors" control="padLEDColor[18]" param="color"/>
+                </Pad>
             </PlacementBank>
 
             <Bank target="MasterBank">
@@ -340,15 +382,6 @@
             </foreach>
         </DeviceMapping>
 
-        <!-- Navigation modes. -->
-        <define name="$NAV_BUTTON_LEFT_INDEX" value="0"/>
-        <define name="$NAV_BUTTON_RIGHT_INDEX" value="1"/>
-
-
-        <!-- Device modes. -->
-        <define name="$PADSECTION_MODE_NONE" value ="0"/>
-        <define name="$PADSECTION_MODE_LAUNCHER" value ="1"/>
-
         <!-- PAD SECTION  -->
         <!-- ******************************************************************************************** -->
 
@@ -359,14 +392,6 @@
                     <ColorIndex table="DAWModeColors" control="padLEDColor[$i]" param="color"/>
                 </Pad>
             </foreach>
-            <Pad control="bankLeft">
-                <Value control="padLEDState[17]" param="state"/>
-                <ColorIndex table="DAWModeColors" control="padLEDColor[17]" param="color"/>
-            </Pad>
-            <Pad control="bankRight">
-                <Value control="padLEDState[18]" param="state"/>
-                <ColorIndex table="DAWModeColors" control="padLEDColor[18]" param="color"/>
-            </Pad>
         </PadSection>
     </Mappings>
 </ControlSurface>

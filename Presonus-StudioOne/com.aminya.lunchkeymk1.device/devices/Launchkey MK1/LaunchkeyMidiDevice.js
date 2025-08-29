@@ -107,7 +107,7 @@ class LaunchkeyMidiDevice extends PreSonus.ControlSurfaceDevice {
             this.addHandler(new LaunchkeyPadColorLEDHandler(`padLEDColor[${padIndex}]`, padIndex));
         }
 
-        this.addHandler(new LaunchkeyButtonColorLEDHandler(`soloLED`, 59));
+        this.addHandler(new LaunchkeyButtonColorLEDHandler("soloLED", 59));
     }
     onExit() {
         // Turn off InControl mode when exiting
@@ -128,7 +128,7 @@ class LaunchkeyMidiDevice extends PreSonus.ControlSurfaceDevice {
     }
     sendButtonColor(address, colorIndex) {
         // Launchkey uses CC messages for button LEDs
-        this.sendMidi(0xB0, address, colorIndex);
+        this.sendMidi(LaunchkeyInControlMessage.kNoteOnChannel0, address, colorIndex);
     }
     initPadStates() {
         // Launchkey MK1 has 16 pads (8 in 2 rows)

@@ -1,8 +1,6 @@
 class LaunchkeyProtocol {
 }
 LaunchkeyProtocol.kLaunchkeyMK1DeviceID = 0x02;
-LaunchkeyProtocol.kLaunchkeyMK2DeviceID = 0x03;
-LaunchkeyProtocol.kLaunchkeyMK3DeviceID = 0x04;
 
 // LED colors for Launchkey pads
 LaunchkeyProtocol.kNoColorIndex = 0;
