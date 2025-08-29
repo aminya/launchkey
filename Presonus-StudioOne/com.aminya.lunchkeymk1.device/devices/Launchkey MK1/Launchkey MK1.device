@@ -8,7 +8,7 @@
 	category="Keyboard"
 	nativeCode="KeyboardDevice"
 
-	surfaceFile="Launchkey MK1 DAW.surface.xml"
+	surfaceFile="Launchkey MK1.surface.xml"
 
 	imageFile="Launchkey MK1.png"
 	textFile="Launchkey MK1.txt"
