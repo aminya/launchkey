@@ -1,6 +1,6 @@
 [project]
 name = "launchkey"
-version = "0.1.0"
+version = "0.2.0"
 description = "Control Novation Launchkey MIDI keyboard with LED animations and MIDI functionality"
 readme = "README.md"
 requires-python = ">=3.10"
