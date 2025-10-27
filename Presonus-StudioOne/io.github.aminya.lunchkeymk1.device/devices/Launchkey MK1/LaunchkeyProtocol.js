@@ -1,3 +1,5 @@
+// @ts-check
+
 class LaunchkeyProtocol {
 }
 LaunchkeyProtocol.kLaunchkeyMK1DeviceID = 0x02;
@@ -18,6 +20,10 @@ LaunchkeyProtocol.kPadColors = [
 
 // InControl mode message
 class LaunchkeyInControlMessage {
+    /**
+     * @param {import("presonus_studioone_5_sdk/src/midiprotocol.ts").SysexBuffer} data
+     * @param {number} length
+     */
     static isMessage(data, length) {
         if (length < LaunchkeyInControlMessage.kLength)
             return false;
@@ -27,10 +33,30 @@ class LaunchkeyInControlMessage {
             data[6] == LaunchkeyInControlMessage.kMessageID;
     }
 
+    /**
+     * @param {import("presonus_studioone_5_sdk/src/midiprotocol.ts").SysexBuffer} data
+     * @returns {boolean}
+     */
+    static isHeader(data) {
+        for (let i = 0; i < LaunchkeyInControlMessage.kHeader.length; i++) {
+            if (data[i] != LaunchkeyInControlMessage.kHeader[i])
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     * @param {import("presonus_studioone_5_sdk/src/midiprotocol.ts").SysexBuffer} data
+     */
     static getValue(data) {
         return data[7];
     }
 
+    /**
+     * @param {import("presonus_studioone_5_sdk/src/midiprotocol.ts").SysexBuffer} sysexBuffer
+     * @param {number} deviceId
+     * @param {number} value
+     */
     static build(sysexBuffer, deviceId, value) {
         sysexBuffer.begin(LaunchkeyInControlMessage.kHeader);
         sysexBuffer.push(deviceId);

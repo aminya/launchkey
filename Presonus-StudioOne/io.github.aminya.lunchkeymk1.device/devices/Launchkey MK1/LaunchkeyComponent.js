@@ -1,30 +1,50 @@
+// @ts-check
+
+// @ts-ignore
 include_file("resource://com.presonus.musicdevices/sdk/controlsurfacecomponent.js");
+// @ts-ignore
 include_file("resource://com.presonus.musicdevices/sdk/musicprotocol.js");
+// @ts-ignore
 include_file("LaunchkeyProtocol.js");
 
-var PadSectionMode;
-(function (PadSectionMode) {
-    PadSectionMode[PadSectionMode["kNone"] = 0] = "kNone";
-    PadSectionMode[PadSectionMode["kLauncher"] = 1] = "kLauncher";
-    PadSectionMode[PadSectionMode["kModeMin"] = 0] = "kModeMin";
-    PadSectionMode[PadSectionMode["kModeMax"] = 1] = "kModeMax";
-})(PadSectionMode || (PadSectionMode = {}));
+const PadSectionMode = {};
+PadSectionMode[PadSectionMode.kNone = 0] = "kNone";
+PadSectionMode[PadSectionMode.kLauncher = 1] = "kLauncher";
+PadSectionMode[PadSectionMode["kModeMin"] = 0] = "kModeMin";
+PadSectionMode[PadSectionMode.kModeMax = 1] = "kModeMax";
 
-class LaunchkeyComponent extends PreSonus.ControlSurfaceComponent {
+
+/**
+ * @type {typeof import("presonus_studioone_5_sdk/src/controlsurfacecomponent.ts").PreSonus["ControlSurfaceComponent"]}
+ */
+// @ts-ignore
+const ControlSurfaceComponent = PreSonus.ControlSurfaceComponent;
+/**
+ * @type {typeof import("presonus_studioone_5_sdk/src/controlsurfacecomponent.ts").PreSonus["PadSectionRole"] & { kLauncherInput: string }}
+ */
+// @ts-ignore
+const PadSectionRole = PreSonus.PadSectionRole;
+/**
+ * @type { { kCombined: number }}
+ */
+// @ts-ignore
+const PadSectionLauncherMode = PreSonus.PadSectionLauncherMode;
+
+class LaunchkeyComponent extends ControlSurfaceComponent {
     onInit(hostComponent) {
         super.onInit(hostComponent);
         this.debugLog = false;
         this.model = hostComponent.model;
 
-        let root = this.model.root;
-        let colorMapper = root.findColorTable("DAWModeColors");
+        const root = this.model.root;
+        const colorMapper = root.findColorTable("DAWModeColors");
         if (colorMapper) {
             LaunchkeyProtocol.kPadColors.forEach((tableColor) => {
                 colorMapper.addColor(tableColor);
             });
         }
 
-        let paramList = hostComponent.paramList;
+        const paramList = hostComponent.paramList;
         this.padSectionMode = paramList.addInteger(PadSectionMode.kModeMin, PadSectionMode.kModeMax, "padSectionMode");
 
         // Launchkey-specific color parameters
@@ -44,12 +64,12 @@ class LaunchkeyComponent extends PreSonus.ControlSurfaceComponent {
         this.magentaColorParam.fromString("#FF00FF");
 
         this.padSection = root.find("PadSectionElement");
-        let c = this.padSection.component;
+        const c = this.padSection.component;
         c.addNullHandler();
-        c.addHandlerForRole(PreSonus.PadSectionRole.kLauncherInput);
+        c.addHandlerForRole(PadSectionRole.kLauncherInput);
 
-        let launcherInputHandler = this.padSection.component.getHandler(PadSectionMode.kLauncher);
-        launcherInputHandler.setMappingMode(PreSonus.PadSectionLauncherMode.kCombined);
+        const launcherInputHandler = this.padSection.component.getHandler(PadSectionMode.kLauncher);
+        launcherInputHandler.setMappingMode(PadSectionLauncherMode.kCombined);
         this.launcherHandler = launcherInputHandler;
 
         this.updatePadSectionMode(PadSectionMode.kNone);
@@ -86,7 +106,7 @@ class LaunchkeyMK1Component extends LaunchkeyComponent {
         super.onInit(hostComponent);
 
         // Launchkey MK1 specific initialization
-        let paramList = hostComponent.paramList;
+        const paramList = hostComponent.paramList;
         this.inControlMode = paramList.addParam("inControlMode");
         this.inControlMode.setSignalAlways(true);
     }
