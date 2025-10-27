@@ -1,0 +1,15 @@
+{
+  "name": "launchkey",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "presonus_studioone_5_sdk": "github:aminya/Presonus_StudioOne_5_SDK#34eaea8adcabb66b52ff2af643f132e6be0cb4f1"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.10",
+    "typescript": "^5"
+  }
+}

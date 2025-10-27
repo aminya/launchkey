@@ -327,7 +327,7 @@
             <!-- 8 Channel Strips -->
             <PlacementBank target="RemoteBank" pagesize="8" name="ChannelBankElement">
                 <foreach variable="$ch" count="8">
-                    <Strip onConnect="onConnectChannel($ch)">
+                    <Strip>
                         <Value control="fader[$ch]" param="volume"/>
                         <Toggle control="solo[$ch]" param="solo" options="momentary"/>
                         <Value control="encoder[$ch]" param="pan"/>
