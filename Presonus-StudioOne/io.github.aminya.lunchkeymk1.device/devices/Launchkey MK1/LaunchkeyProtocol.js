@@ -21,7 +21,7 @@ LaunchkeyProtocol.kPadColors = [
 // InControl mode message
 class LaunchkeyInControlMessage {
     /**
-     * @param {import("presonus_studioone_5_sdk/src/midiprotocol.ts").SysexBuffer} data
+     * @param {Uint8Array} data
      * @param {number} length
      */
     static isMessage(data, length) {
@@ -34,7 +34,7 @@ class LaunchkeyInControlMessage {
     }
 
     /**
-     * @param {import("presonus_studioone_5_sdk/src/midiprotocol.ts").SysexBuffer} data
+     * @param {Uint8Array} data
      * @returns {boolean}
      */
     static isHeader(data) {
@@ -46,7 +46,7 @@ class LaunchkeyInControlMessage {
     }
 
     /**
-     * @param {import("presonus_studioone_5_sdk/src/midiprotocol.ts").SysexBuffer} data
+     * @param {Uint8Array} data
      */
     static getValue(data) {
         return data[7];

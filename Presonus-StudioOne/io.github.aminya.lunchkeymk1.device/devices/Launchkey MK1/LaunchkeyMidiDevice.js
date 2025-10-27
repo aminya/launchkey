@@ -36,7 +36,7 @@ class LaunchkeyDeviceModeHandler extends ControlHandler {
         this.name = name;
     }
     /**
-     * @param {import("presonus_studioone_5_sdk/src/midiprotocol.ts").SysexBuffer} data
+     * @param {Uint8Array<ArrayBufferLike>} data
      * @param {number} length
      */
     receiveSysex(data, length) {
