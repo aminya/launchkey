@@ -14,7 +14,7 @@ It provides two devices that will be added automatically once the extension is i
 - Instrument Device: allows to use the keyboard as an instrument and use the faders and encoders for controlling any parameter.
   - Keys of the keyboard
   - 16 pads: note on/off
-  - 9 Faders: user assignable
-  - 9 Solo Buttons: user assignable
-  - 8 Encoders: user assignable
-  - 2 Circular Buttons: user assignable
+  - 9 Faders: user assignable via Midi learn
+  - 9 Solo Buttons: user assignable via Midi learn
+  - 8 Encoders: user assignable via Midi learn
+  - 2 Circular Buttons: user assignable via Midi learn
