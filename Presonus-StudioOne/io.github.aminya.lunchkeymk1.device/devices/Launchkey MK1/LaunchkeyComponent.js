@@ -30,7 +30,35 @@ const PadSectionRole = PreSonus.PadSectionRole;
 // @ts-ignore
 const PadSectionLauncherMode = PreSonus.PadSectionLauncherMode;
 
+/**
+ * @typedef {{
+ *  classID: string;
+ *  model: {
+ *   root: {
+ *    findColorTable: (arg0: string) => {addColor: (arg0: any) => void; };
+ *    find: (arg0: string) => {component: Component; };
+ *   };
+ *  };
+*   paramList: {
+ *    addInteger: (arg0: number, arg1: number, arg2: string) => {value: number; setValue: (value: number, flags: boolean) => void; };
+ *    addColor: (arg0: string) => {value: string; fromString: (arg0: string) => void; };
+ *  };
+ * }} HostComponent
+ */
+
+/**
+ * @typedef {{
+ *    addNullHandler: () => void;
+ *    addHandlerForRole: (role: string) => void;
+ *    setActiveHandler: (mode: number) => void;
+ *    getHandler: (mode: number) => {setMappingMode: (mappingMode: number) => void; };
+ * }} Component
+ */
+
 class LaunchkeyComponent extends ControlSurfaceComponent {
+    /**
+     * @param {HostComponent} hostComponent
+     */
     onInit(hostComponent) {
         super.onInit(hostComponent);
         this.debugLog = false;
@@ -88,12 +116,20 @@ class LaunchkeyComponent extends ControlSurfaceComponent {
         super.onExit();
     }
 
+    /**
+     * @param {boolean} state
+     */
     onSuspend(state) {
-        if (state && this.padSectionMode.value == PadSectionMode.kLauncher)
+        if (state && this.padSectionMode && this.padSectionMode.value == PadSectionMode.kLauncher)
             this.padSectionMode.setValue(PadSectionMode.kNone, true);
     }
+    /**
+     * @param {number} mode
+     */
     updatePadSectionMode(mode) {
-        this.padSection.component.setActiveHandler(mode);
+        if (this.padSection) {
+            this.padSection.component.setActiveHandler(mode);
+        }
     }
 }
 

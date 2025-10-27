@@ -25,8 +25,14 @@ const ControlSurfaceDevice = PreSonus.ControlSurfaceDevice;
 const PadSectionPadAnimation = PreSonus.PadSectionPadAnimation;
 
 class LaunchkeyDeviceModeHandler extends ControlHandler {
+    /**
+     * @param {string} name
+     */
     constructor(name) {
         super();
+        /**
+         * @type {string}
+         */
         this.name = name;
     }
     /**
@@ -50,7 +56,13 @@ class LaunchkeyButtonColorLEDHandler extends ControlHandler {
      */
     constructor(name, address) {
         super();
+        /**
+         * @type {string}
+         */
         this.name = name;
+        /**
+         * @type {number}
+         */
         this.address = address;
     }
     /**
@@ -58,6 +70,10 @@ class LaunchkeyButtonColorLEDHandler extends ControlHandler {
      * @param {number} flags
      */
     sendValue(value, flags) {
+        /**
+         * @type {LaunchkeyMidiDevice | null}
+         */
+        // @ts-ignore
         const launchkeyDevice = this.device;
         if (!launchkeyDevice) {
             return;
@@ -78,10 +94,14 @@ class LaunchkeyPadHandler extends ControlHandler {
 }
 class LaunchkeyPadStateLEDHandler extends LaunchkeyPadHandler {
     /**
-     * @param {number} value
+     * @param {boolean} value
      * @param {number} flags
      */
     sendValue(value, flags) {
+        /**
+         * @type {LaunchkeyMidiDevice | null}
+         */
+        // @ts-ignore
         const launchkeyDevice = this.device;
         if (!launchkeyDevice) {
             return;
@@ -97,6 +117,10 @@ class LaunchkeyPadAnimationLEDHandler extends LaunchkeyPadHandler {
      * @param {number} flags
      */
     sendValue(value, flags) {
+        /**
+         * @type {LaunchkeyMidiDevice | null}
+         */
+        // @ts-ignore
         const launchkeyDevice = this.device;
         if (!launchkeyDevice) {
             return;
@@ -112,6 +136,10 @@ class LaunchkeyPadColorLEDHandler extends LaunchkeyPadHandler {
      * @param {number} flags
      */
     sendValue(value, flags) {
+        /**
+         * @type {LaunchkeyMidiDevice | null}
+         */
+        // @ts-ignore
         const launchkeyDevice = this.device;
         if (!launchkeyDevice) {
             return;
@@ -175,9 +203,21 @@ class LaunchkeyMidiDevice extends ControlSurfaceDevice {
      */
     constructor(deviceId, rows, columns) {
         super();
+        /**
+         * @type {number}
+         */
         this.deviceId = deviceId;
+        /**
+         * @type {number}
+         */
         this.rows = rows;
+        /**
+         * @type {number}
+         */
         this.columns = columns;
+        /**
+         * @type {LaunchkeyPadState[]}
+         */
         this.pads = new Array();
     }
     /**
