@@ -1,6 +1,6 @@
-# Contributing to lunchkey
+# Contributing to launchkey
 
-Thank you for your interest in contributing to lunchkey! This document provides information for developers who want to contribute to the project.
+Thank you for your interest in contributing to launchkey! This document provides information for developers who want to contribute to the project.
 
 ## Development Setup
 
@@ -19,15 +19,15 @@ Thank you for your interest in contributing to lunchkey! This document provides 
 
 2. **Clone and install the project**:
    ```bash
-   git clone https://github.com/aminya/lunchkey.git
-   cd lunchkey
+   git clone https://github.com/aminya/launchkey.git
+   cd launchkey
    uv sync
    ```
 
 3. **Run Python scripts directly with uv**:
    ```bash
    # Run the main script
-   uv run python -m lunchkey.main
+   uv run python -m launchkey.main
 
    # Or activate the virtual environment for interactive use
    uv shell
@@ -39,23 +39,23 @@ Thank you for your interest in contributing to lunchkey! This document provides 
 
 ```bash
 # List available MIDI ports
-uv run python -m lunchkey.main --list-ports
+uv run python -m launchkey.main --list-ports
 
 # Connect to a specific MIDI port
-uv run python -m lunchkey.main --port "MIDIOUT2"
+uv run python -m launchkey.main --port "MIDIOUT2"
 
 # Connect without running animation (useful for testing)
-uv run python -m lunchkey.main --port "MIDIOUT2" --no-animation
+uv run python -m launchkey.main --port "MIDIOUT2" --no-animation
 
 # Use default port (MIDIOUT2)
-uv run python -m lunchkey.main
+uv run python -m launchkey.main
 ```
 
 ## Project Structure
 
 ```
-lunchkey/
-├── lunchkey/
+launchkey/
+├── launchkey/
 │   └── main.py          # Main implementation
 ├── pyproject.toml       # Project configuration
 ├── uv.lock             # Dependency lock file
@@ -119,7 +119,7 @@ uv run pip install -e .
 
 ```bash
 # Test the built package
-uv run python -m lunchkey.main --help
+uv run python -m launchkey.main --help
 ```
 
 ## Troubleshooting Development Issues
@@ -151,4 +151,4 @@ If you encounter issues during development:
 
 ## License
 
-By contributing to lunchkey, you agree that your contributions will be licensed under the same license as the project.
+By contributing to launchkey, you agree that your contributions will be licensed under the same license as the project.

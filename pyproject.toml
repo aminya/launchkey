@@ -1,5 +1,5 @@
 [project]
-name = "lunchkey"
+name = "launchkey"
 version = "0.1.0"
 description = "Control Novation Launchkey MIDI keyboard with LED animations and MIDI functionality"
 readme = "README.md"
@@ -26,12 +26,12 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/aminya/lunchkey"
-Repository = "https://github.com/aminya/lunchkey"
-Bug_Reports = "https://github.com/aminya/lunchkey/issues"
+Homepage = "https://github.com/aminya/launchkey"
+Repository = "https://github.com/aminya/launchkey"
+Bug_Reports = "https://github.com/aminya/launchkey/issues"
 
 [project.scripts]
-lunchkey = "lunchkey.main:main"
+launchkey = "launchkey.main:main"
 
 [build-system]
 requires = ["setuptools>=61.0", "wheel"]

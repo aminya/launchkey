@@ -1,4 +1,4 @@
-# lunchkey
+# launchkey
 
 Control Novation Launchkey MIDI keyboard with LED animations and MIDI functionality in Studio One or via Python.
 
@@ -29,7 +29,7 @@ It provides two devices that will be added automatically once the extension is i
 
 ### Installing the StudioOne Extension
 
-1. Download the extension from [this link](https://github.com/aminya/lunchkey/releases/download/v0.1.1/io.github.aminya.lunchkeymk1.device.zip)
+1. Download the extension from [this link](https://github.com/aminya/launchkey/releases/download/v0.1.1/io.github.aminya.launchkeymk1.device.zip)
 2. Extract it and copy the extension folder to your Studio One under `C:\Users\<username>\AppData\Roaming\PreSonus\Studio One 7\Extensions`
 3. Restart Studio One
 4. The Launchkey MK1 will appear in your MIDI device list
@@ -54,20 +54,20 @@ If not using StudioOne or you want to learn how Launchkey works, you can use the
 Install directly from PyPI:
 
 ```bash
-pip install lunchkey
+pip install launchkey
 ```
 
 After installation, you can use the command-line tool:
 
 ```bash
 # List available MIDI ports
-lunchkey --list-ports
+launchkey --list-ports
 
 # Connect to a specific MIDI port
-lunchkey --port "MIDIOUT2"
+launchkey --port "MIDIOUT2"
 
 # Connect without running animation
-lunchkey --port "MIDIOUT2" --no-animation
+launchkey --port "MIDIOUT2" --no-animation
 ```
 
 ## Contributing

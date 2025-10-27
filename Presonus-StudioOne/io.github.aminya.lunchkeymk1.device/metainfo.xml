@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <MetaInformation>
-	<Attribute id="Package:ID" value="com.aminya.lunchkeymk1.device"/>
+	<Attribute id="Package:ID" value="com.aminya.launchkeymk1.device"/>
 	<Attribute id="Package:Name" value="Novation Launchkey MK1"/>
 	<Attribute id="Package:Description" value="Novation Launchkey MK1 Support for Studio One"/>
 	<Attribute id="Package:Version" value="1.0.0.0"/>
