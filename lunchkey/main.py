@@ -173,32 +173,6 @@ class Launchkey:
             + random.randint(int(not red_or_green), 3) * 16
         )
 
-    def run_animation(self):
-        """
-        Run the LED sweep animation on the Launchkey.
-
-        Args:
-            outport: MIDI output port
-        """
-        try:
-            while True:
-                color = self.random_color()
-
-                for index, _led in enumerate(self.row1):
-                    # Set current LED color
-                    self.write_led(self.row1[index], color)
-                    self.write_led(self.row2[index], color)
-
-                    # Turn off last set LEDs
-                    if index > 0:
-                        self.write_led(self.row1[index - 1], 0)
-                        self.write_led(self.row2[index - 1], 0)
-                    sleep(0.1)
-
-        except KeyboardInterrupt:
-            print("\nAnimation stopped by user")
-            raise
-
 
 @dataclass
 class Args:
@@ -236,6 +210,57 @@ def parse_arguments() -> Args:
     return Args(**vars(parser.parse_args()))
 
 
+def run_sweep_animation(launchkey):
+    """
+    Run the LED sweep animation on the Launchkey.
+
+    Args:
+        outport: MIDI output port
+    """
+    try:
+        while True:
+            color = launchkey.random_color()
+
+            for index, _led in enumerate(launchkey.row1):
+                # Set current LED color
+                launchkey.write_led(launchkey.row1[index], color)
+                launchkey.write_led(launchkey.row2[index], color)
+
+                # Turn off last set LEDs
+                if index > 0:
+                    launchkey.write_led(launchkey.row1[index - 1], 0)
+                    launchkey.write_led(launchkey.row2[index - 1], 0)
+                sleep(0.2)
+
+    except KeyboardInterrupt:
+        print("\nAnimation stopped by user")
+        raise
+
+
+def run_wave_animation(launchkey):
+    """
+    Run a rainbow wave animation on the Launchkey.
+
+    Args:
+        outport: MIDI output port
+    """
+    try:
+        while True:
+            for color in range(1, 128):
+                for index, _led in enumerate(launchkey.row1):
+                    launchkey.write_led(
+                        launchkey.row1[index], (color + index) % 127 + 1
+                    )
+                    launchkey.write_led(
+                        launchkey.row2[index], (color + index) % 127 + 1
+                    )
+                sleep(0.2)
+
+    except KeyboardInterrupt:
+        print("\nAnimation stopped by user")
+        raise
+
+
 def main():
     # Parse command line arguments
     args = parse_arguments()
@@ -265,7 +290,8 @@ def main():
         # Run the LED animation unless --no-animation is specified
         if not args.no_animation:
             print("Starting LED animation... (Press Ctrl+C to stop)")
-            launchkey.run_animation()
+            # run_sweep_animation(launchkey)
+            run_wave_animation(launchkey)
         else:
             print(
                 "Connected successfully! Animation skipped due to --no-animation flag."
